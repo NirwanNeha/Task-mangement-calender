@@ -88,7 +88,180 @@ export class CalenderComponent implements OnInit {
     this.generateTimeSlots();
   }
   
-
+  initializeData() {
+    // Initialize resource groups with hierarchical structure
+    this.resourceGroups = [
+      {
+        id: 'contractors',
+        name: 'Contractors',
+        expanded: true,
+        resources: [
+          {
+            id: 'c1',
+            name: 'John Smith',
+            avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+            role: 'Senior Developer',
+            groupId: 'contractors'
+          },
+          {
+            id: 'c2',
+            name: 'Sarah Johnson',
+            avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+            role: 'UI/UX Designer',
+            groupId: 'contractors'
+          },
+          {
+            id: 'c3',
+            name: 'Mike Davis',
+            avatar: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+            role: 'Full Stack Developer',
+            groupId: 'contractors'
+          }
+        ]
+      },
+      {
+        id: 'employees',
+        name: 'Employees',
+        expanded: true,
+        resources: [
+          {
+            id: 'e1',
+            name: 'Emily Chen',
+            avatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+            role: 'Marketing Manager',
+            groupId: 'employees'
+          },
+          {
+            id: 'e2',
+            name: 'David Wilson',
+            avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+            role: 'DevOps Engineer',
+            groupId: 'employees'
+          },
+          {
+            id: 'e3',
+            name: 'Lisa Anderson',
+            avatar: 'https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+            role: 'Product Manager',
+            groupId: 'employees'
+          },
+          {
+            id: 'e4',
+            name: 'Robert Taylor',
+            avatar: 'https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+            role: 'QA Engineer',
+            groupId: 'employees'
+          }
+        ]
+      },
+      {
+        id: 'freelancers',
+        name: 'Freelancers',
+        expanded: false,
+        resources: [
+          {
+            id: 'f1',
+            name: 'Alex Rodriguez',
+            avatar: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+            role: 'Graphic Designer',
+            groupId: 'freelancers'
+          },
+          {
+            id: 'f2',
+            name: 'Maria Garcia',
+            avatar: 'https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+            role: 'Content Writer',
+            groupId: 'freelancers'
+          }
+        ]
+      }
+    ];
+    
+    // Initialize tasks
+    this.tasks = [
+      {
+        id: 't1',
+        title: 'Database Migration',
+        resourceId: 'c1',
+        startTime: new Date(2025, 0, 15, 9, 0),
+        endTime: new Date(2025, 0, 15, 12, 0),
+        color: '#3b82f6',
+        status: 'progress'
+      },
+      {
+        id: 't2',
+        title: 'UI Design Review',
+        resourceId: 'c2',
+        startTime: new Date(2025, 0, 15, 10, 0),
+        endTime: new Date(2025, 0, 15, 11, 30),
+        color: '#10b981',
+        status: 'completed'
+      },
+      {
+        id: 't3',
+        title: 'API Development',
+        resourceId: 'c3',
+        startTime: new Date(2025, 0, 15, 14, 0),
+        endTime: new Date(2025, 0, 15, 17, 0),
+        color: '#f59e0b',
+        status: 'progress'
+      },
+      {
+        id: 't4',
+        title: 'Marketing Campaign',
+        resourceId: 'e1',
+        startTime: new Date(2025, 0, 15, 11, 0),
+        endTime: new Date(2025, 0, 15, 13, 0),
+        color: '#ef4444',
+        status: 'pending'
+      },
+      {
+        id: 't5',
+        title: 'Code Review',
+        resourceId: 'e2',
+        startTime: new Date(2025, 0, 15, 15, 0),
+        endTime: new Date(2025, 0, 15, 16, 0),
+        color: '#8b5cf6',
+        status: 'progress'
+      },
+      {
+        id: 't6',
+        title: 'Testing Phase',
+        resourceId: 'e3',
+        startTime: new Date(2025, 0, 15, 13, 30),
+        endTime: new Date(2025, 0, 15, 15, 30),
+        color: '#06b6d4',
+        status: 'pending'
+      },
+      {
+        id: 't7',
+        title: 'Quality Assurance',
+        resourceId: 'e4',
+        startTime: new Date(2025, 0, 15, 9, 30),
+        endTime: new Date(2025, 0, 15, 11, 0),
+        color: '#84cc16',
+        status: 'completed'
+      },
+      {
+        id: 't8',
+        title: 'Logo Design',
+        resourceId: 'f1',
+        startTime: new Date(2025, 0, 15, 12, 0),
+        endTime: new Date(2025, 0, 15, 14, 0),
+        color: '#f97316',
+        status: 'progress'
+      },
+      {
+        id: 't9',
+        title: 'Content Creation',
+        resourceId: 'f2',
+        startTime: new Date(2025, 0, 15, 10, 30),
+        endTime: new Date(2025, 0, 15, 12, 30),
+        color: '#ec4899',
+        status: 'pending'
+      }
+    ];
+  }
   
   generateTimeSlots() {
     this.timeSlots = [];
